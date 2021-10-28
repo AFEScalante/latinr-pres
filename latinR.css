@@ -1,8 +1,8 @@
 .remark-slide-content {
-  background-image: url('./LatinR_LOGOS-21.png'), linear-gradient(to bottom, white 90%, rgba(236, 236, 236) 100%)  ;
+  background-image: url('./img/latinr-kantar.png'), linear-gradient(to bottom, white 90%, rgba(236, 236, 236) 100%)  ;
   background-position: 2% 98%, center ;
-  background-size: 70px, cover ;
-  font-size: 24pt;
+  background-size: 240px, cover ;
+  font-size: 20pt;
   color: #000000;
   font-family: Sans-Serif;
 }
@@ -30,7 +30,7 @@
 
 
 .title-slide {
-  background-image: url('./LatinR_LOGOS-23.png'), linear-gradient(to bottom, #ECECEC 1%, rgba(236, 236, 236) 20%)  ;
+  background-image: url('./img/LatinR_LOGOS-23.png'), linear-gradient(to bottom, #ECECEC 1%, rgba(236, 236, 236) 20%)  ;
   background-position: 3% 3%, 100% 100% ;
   background-size: 250px, 100% 81% ;
   font-family: Sans-Serif;
@@ -59,7 +59,7 @@
 }
 
 .chapter-slide {
-  background-image: url("./LatinR_LOGOS-23.png"), linear-gradient(to bottom, #5542FF 1%, rgba(85, 66, 255) 95%) ;
+  background-image: url("./img/LatinR_LOGOS-23.png"), linear-gradient(to bottom, #5542FF 1%, rgba(85, 66, 255) 95%) ;
   background-position: 10px 590px , center;
   background-size: 0px, cover ;
   font-family: Sans-Serif;

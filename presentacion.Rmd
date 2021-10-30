@@ -13,10 +13,6 @@ output:
       ratio: '16:9'
 ---
 
-# De que *SI* se hablará
-
-* Estrategias y metodologías de trabajo
-* Escritura y buenas prácticas
 
 ## De que no se hablará...
 
@@ -42,7 +38,6 @@ class: middle
 
 * Numerosos paquetes que hacen fácil su integración con otras tecnologías.
 
-
 ---
 
 class: chapter-slide
@@ -51,10 +46,7 @@ class: chapter-slide
 
 ---
 
-<br>
-**Buscas robustez, reproducibilidad y eficiencia.**
-
---
+class: middle
 
 .pull-left[
   ## Tiempo
@@ -67,6 +59,10 @@ class: chapter-slide
   ## Volumen
   * Muchos procesos idénticos en corto tiempo
 ]
+
+--
+
+**Buscas robustez, reproducibilidad y eficiencia.**
 
 ---
 
@@ -128,56 +124,38 @@ class: chapter-slide
 
 ---
 
-# Creación del paquete
+# Reproducibilidad
 
-Apoyarte de paquetes como <img src="./img/devtools.png" height="90"> <img src="./img/usethis.png" height="90">
+¿El código que escribí en mi computadora funcionará en la de mi compañero?
 
 --
 
-* Entre más dependencias tenga el paquete, mayor el tiempo que tendrás que dedicar para buscar actualizaciones, bugs resueltos.
+.center[
+  <img src="./img/meme1.png" height="350">
+]
 
 ---
 
-# Escribir el código
+class: middle
 
-.pull-left[
+Puedes apoyarte de `checkpoint` (o cualquier otro administrador de paquetes) para fijar un momento en el tiempo bajo el cuál se harán todas las instalaciones de paquetes.
 
-  * ¿Quién más lo va a leer?
-  
-  * Seguir el **teorema de la legibilidad**
-  
-  * Bien documentado
-  
-  * Apoyate de https://style.tidyverse.org/
-
-]
-
-.pull-right[
-
- <img src="./img/suffer.jpg">
- 
-]
+```{r eval=FALSE}
+library(checkpoint)
+checkpoint::setSnaphot("12-11-2021")
+```
 
 --
 
-`devtools::lint()`
+* Es importante fijar las fechas en las que se actualizará el snapshot.
+
+* Actualizar el snapshot **no** necesariamente implica actualizar la versión de R
 
 ---
 
-# Testing
+class: middle
 
-.pull-left[
-### Unitario
-<img src="./img/testthat.png" height="150">
-]
-
---
-
-.pull-right[
-###Regresion
-<img src="./img/office.png" height="150">
-]
-
+<img src="./img/esquema.PNG" width="1100">
 
 ---
 
@@ -189,7 +167,59 @@ Apoyarte de paquetes como <img src="./img/devtools.png" height="90"> <img src=".
 
 --
 
+.center[
 <img src="./img/paquetes.png" height="320">
+]
+
+---
+
+class: chapter-slide
+
+# Eficiencia
+
+---
+
+Un usuario ha reportado que si el análisis se corre con 2,000 encuestados (el doble del original), este tarda demasiado y en algunas ocasiones arroja un error de `R` que es difícil interpretar...
+
+--
+
+.center[
+  <img src="./img/chango.jpg" height="320">
+]
+
+---
+
+* Encontrar cuellos de botella
+
+```{r eval=FALSE}
+profvis::profvis()
+microbenchmark::microbenchmark()
+```
+
+* Paralelizar procesos
+
+En matrices, listas, vectores...
+
+```{r eval=FALSE}
+parallel::parApply()
+parallel::parLapply()
+```
+
+en ciclos
+
+```{r eval=FALSE}
+foreach::`%dopar%`()
+```
+
+---
+
+# ¿Cómo poner en operación el paquete/shiny?
+
+--
+
+.center[
+  <img src="./img/esquema-op.PNG", height="450">
+]
 
 ---
 
@@ -199,3 +229,12 @@ class: chapter-slide
 
 ---
 
+* Adopta una metodología de desarrollo de software (Agile recomendado).
+
+* Aprovecha el conocimiento del experto del producto, ayudará a definir mejor alcances y objetivos.
+
+* Sigue las buenas prácticas de escritura y testeo, esto disminuirá la cantidad de bugs, que al final se traducen en pérdida económica, de tiempo y esfuerzo.
+
+* Afina y perfila (Optimización de tiempo y memoria)
+
+* Mantén comunicación con un equipo de tecnología: Ingenieros de datos, DevOps, Testers, etc.

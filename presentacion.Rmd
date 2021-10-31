@@ -13,6 +13,20 @@ output:
       ratio: '16:9'
 ---
 
+class: chapter-slide middle
+
+## Sobre nosotros
+<br>
+.pull-left[
+  <img src="./img/foto-angel.png" height=360>
+]
+
+.pull-right[
+  <img src="./img/foto-angel.png" height=360>
+]
+
+
+---
 
 ## De que no se hablará...
 
@@ -153,9 +167,71 @@ checkpoint::setSnaphot("12-11-2021")
 
 ---
 
-class: middle
+# Creación del paquete
 
-<img src="./img/esquema.PNG" width="1100">
+--
+
+.pull-left[
+
+<img src="./img/devtools.png" height=120>
+
+```{r eval=FALSE}
+library(devtools)
+create_package("path")
+use_git()
+```
+
+*Importante:* El balance **dependencias vs mantenimiento**
+]
+
+--
+
+.pull-right[
+<img src="./img/r-packages.jpg" height=440>
+]
+
+
+---
+
+# Escribir el código
+
+--
+
+.pull-left[
+  <img src="./img/codigo-leg-meme.png" width="350">
+]
+
+--
+
+.pull-right[
+  * Sigue el **teorema de la legibilidad**
+  * Escribe tratando de reducir el tiempo que le tomaría a alguien más entenderlo
+  * Documenta tus funciones (si pudes usar ejemplos, mejor)
+  
+  
+```{r eval=FALSE}
+library(devtools)
+document()
+lint()
+```
+  
+]
+
+---
+
+# Testing
+
+.pull-left[
+  ### Unitario
+  <img src="./img/testthat.png" height="220">
+]
+
+--
+
+.pull-right[
+  ### Regresión
+  <img src="./img/office-time.png" height="280">
+]
 
 ---
 
@@ -196,6 +272,8 @@ profvis::profvis()
 microbenchmark::microbenchmark()
 ```
 
+--
+
 * Paralelizar procesos
 
 En matrices, listas, vectores...
@@ -229,6 +307,8 @@ class: chapter-slide
 
 ---
 
+class: middle
+
 * Adopta una metodología de desarrollo de software (Agile recomendado).
 
 * Aprovecha el conocimiento del experto del producto, ayudará a definir mejor alcances y objetivos.
@@ -238,3 +318,4 @@ class: chapter-slide
 * Afina y perfila (Optimización de tiempo y memoria)
 
 * Mantén comunicación con un equipo de tecnología: Ingenieros de datos, DevOps, Testers, etc.
+

@@ -10,6 +10,7 @@ output:
     self_contained: true
     lib_dir: libs
     nature:
+      countIncrementalSlides: false
       ratio: '16:9'
 ---
 
@@ -28,13 +29,37 @@ class: chapter-slide middle
 
 ---
 
-## De que no se hablará...
+## De que **SI** se hablará
+
+.pull-left[
+
+* Estrategias y metodologías de trabajo
+* Escritura y buenas prácticas
+
+.center[
+<img src="./img/clean_code.gif" height=200>
+]
+
+]
+
+--
+
+.pull-right[
+## De que **NO** se hablará
 
 * Detalles técnicos de ingeniería de software
 * DevOps - Repositorios, CD & CI
 * Consumo - API y WebApp (Plumber y Shiny)
 
+.center[
+<img src="./img/ci.png" height=200>
+
+]
+]
+
+
 ---
+
 
 class: middle
 
@@ -42,15 +67,20 @@ class: middle
 
 --
 
-* R junta de forma natural el poder analítico y estadístico con habilidades de producción.
+* R junta de forma natural el poder **analítico y estadístico** con habilidades de producción.
 
 --
 
-* Es más cómodo para aquellos que venimos de los colegios de matemáticas/estadística.
+* Numerosos paquetes que hacen fácil su **integración** con otras tecnologías.
 
 --
 
-* Numerosos paquetes que hacen fácil su integración con otras tecnologías.
+* Es más cómodo para aquellos que empiezan a profundizar en el área de matemáticas/estadística.
+
+--
+
+* Tienen una comunidad es **diversa, extensa y activa**.
+
 
 ---
 
@@ -62,21 +92,25 @@ class: chapter-slide
 
 class: middle
 
+
 .pull-left[
   ## Tiempo
-  * Pocos procesos que se repetirán de forma idéntica a futuro
+  Tiempo límitado para correr un proceso.
 ]
 
 --
 
 .pull-right[
   ## Volumen
-  * Muchos procesos idénticos en corto tiempo
+  Muchos procesos repetidos.
 ]
 
 --
 
-**Buscas robustez, reproducibilidad y eficiencia.**
+.center[
+<img src="./img/dinero_tiempo.png">
+]
+
 
 ---
 
@@ -113,10 +147,18 @@ Preguntas naturales:
 
 ### Apégate a una metodología de desarrollo
 
-* **SCRUM**
-* eXtreme Programming (XP)
-* Lean Agile Process
-* Crystal Clear
+--
+
+.center[
+<img src="./img/agile.jpg" height=130>
+]
+
+--
+
+<img src="./img/ScrumOrg.jpg" height=100>
+<img src="./img/xp.jpg" height=100>
+<img src="./img/kanban.jpg" height=100>
+<img src="./img/crystal.jpg" height=100>
 
 ---
 

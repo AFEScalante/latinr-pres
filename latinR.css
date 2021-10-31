@@ -105,6 +105,11 @@
   margin-top: -30px;
 }
 
+.pull-right ~ p {
+  clear: both;
+}
+
+
 .remark-code, .remark-inline-code {
   font-size: 20pt;
   font-family: Sans-Serif;

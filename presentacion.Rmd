@@ -23,7 +23,7 @@ class: chapter-slide middle
 ]
 
 .pull-right[
-  <img src="./img/foto-angel.png" height=360>
+  <img src="./img/foto-nancy.png" height=360>
 ]
 
 
@@ -49,7 +49,7 @@ class: chapter-slide middle
 
 * Detalles técnicos de ingeniería de software
 * DevOps - Repositorios, CD & CI
-* Consumo - API y WebApp (Plumber y Shiny)
+* Consumo - API y WebApp
 
 .center[
 <img src="./img/ci.png" height=200>
@@ -67,19 +67,16 @@ class: middle
 
 --
 
-* R junta de forma natural el poder **analítico y estadístico** con habilidades de producción.
+* Es más intuitivo para aquellos que empiezan a profundizar en el área de matemáticas/estadística.
 
 --
 
 * Numerosos paquetes que hacen fácil su **integración** con otras tecnologías.
 
---
-
-* Es más cómodo para aquellos que empiezan a profundizar en el área de matemáticas/estadística.
 
 --
 
-* Tienen una comunidad es **diversa, extensa y activa**.
+* Tiene una comunidad **diversa, extensa y activa**.
 
 
 ---
@@ -108,7 +105,7 @@ class: middle
 --
 
 .center[
-<img src="./img/dinero_tiempo.png">
+  <img src="./img/dinero_tiempo.png">
 ]
 
 
@@ -125,7 +122,7 @@ class: middle
 
 .pull-right[
   ## Objetivo
-  Automatizar este proceso mediante un paquete en `R`, que sea capaz de leer los datos de la encuesta, aplique un modelo de **k-means**, resuma y genere un reporte en PowerPoint por cada marca.
+  Automatizar este proceso mediante un paquete en `R`, que sea capaz de leer los         datos de la encuesta, aplique un modelo de **k-means**, resuma y genere un     reporte en PowerPoint por cada marca.
   
   Poner este paquete en **producción**. Que otras personas puedan consumirlo.
 ]
@@ -139,9 +136,12 @@ class: chapter-slide
 ---
 
 Preguntas naturales: 
+
+--
 * ¿Por donde empiezo?
 * ¿En cuánto tiempo puedo terminar el desarrollo del paquete?
-* ¿Cuánto esfuerzo requerirá? ¿Necesito ayuda de alguien más?
+* ¿Cuánto esfuerzo requerirá?
+* ¿Necesito ayuda de alguien más?
 
 --
 
@@ -180,7 +180,8 @@ class: chapter-slide
 
 ---
 
-# Reproducibilidad
+# Desarrollo
+#### Reproducibilidad
 
 ¿El código que escribí en mi computadora funcionará en la de mi compañero?
 
@@ -194,53 +195,36 @@ class: chapter-slide
 
 class: middle
 
-Puedes apoyarte de `checkpoint` (o cualquier otro administrador de paquetes) para fijar un momento en el tiempo bajo el cuál se harán todas las instalaciones de paquetes.
+Administrador de paquetes (`packrat`, `checkpoint`, etc.)
+
+```{r eval=FALSE}
+library(packrat)
+init()
+snapshot()
+on()
+off()
+```
+
+--
 
 ```{r eval=FALSE}
 library(checkpoint)
-checkpoint::setSnaphot("12-11-2021")
+setSnaphot("tu-fecha")
 ```
 
 --
 
-* Es importante fijar las fechas en las que se actualizará el snapshot.
-
-* Actualizar el snapshot **no** necesariamente implica actualizar la versión de R
+<img src="./img/docker.png" height=90>
 
 ---
 
-# Creación del paquete
+# Desarrollo
+#### Escribir el código
 
 --
 
 .pull-left[
-
-<img src="./img/devtools.png" height=120>
-
-```{r eval=FALSE}
-library(devtools)
-create_package("path")
-use_git()
-```
-
-*Importante:* El balance **dependencias vs mantenimiento**
-]
-
---
-
-.pull-right[
-<img src="./img/r-packages.jpg" height=440>
-]
-
-
----
-
-# Escribir el código
-
---
-
-.pull-left[
-  <img src="./img/codigo-leg-meme.png" width="350">
+  <img src="./img/codigo-leg-meme.png" width="280">
 ]
 
 --
@@ -250,34 +234,30 @@ use_git()
   * Escribe tratando de reducir el tiempo que le tomaría a alguien más entenderlo
   * Documenta tus funciones (si pudes usar ejemplos, mejor)
   
-  
-```{r eval=FALSE}
-library(devtools)
-document()
-lint()
-```
-  
+https://style.tidyverse.org/
+
 ]
 
 ---
 
-# Testing
+# Desarrollo
 
 .pull-left[
-  ### Unitario
+  #### Testing Unitario
   <img src="./img/testthat.png" height="220">
 ]
 
 --
 
 .pull-right[
-  ### Regresión
+  #### Testing de Regresión
   <img src="./img/office-time.png" height="280">
 ]
 
 ---
 
-#Crea un ecosistema (si es necesario)
+# Desarrollo
+#### Crea un ecosistema (si es necesario)
 
 --
 
@@ -287,6 +267,16 @@ lint()
 
 .center[
 <img src="./img/paquetes.png" height="320">
+]
+
+---
+
+# ¿Cómo poner en operación el paquete/shiny?
+
+--
+
+.center[
+  <img src="./img/esquema-op.PNG", height="450">
 ]
 
 ---
@@ -311,6 +301,11 @@ Un usuario ha reportado que si el análisis se corre con 2,000 encuestados (el d
 
 ```{r eval=FALSE}
 profvis::profvis()
+```
+
+--
+
+```{r eval=FALSE}
 microbenchmark::microbenchmark()
 ```
 
@@ -318,28 +313,16 @@ microbenchmark::microbenchmark()
 
 * Paralelizar procesos
 
-En matrices, listas, vectores...
-
 ```{r eval=FALSE}
 parallel::parApply()
 parallel::parLapply()
 ```
 
-en ciclos
+ó
 
 ```{r eval=FALSE}
 foreach::`%dopar%`()
 ```
-
----
-
-# ¿Cómo poner en operación el paquete/shiny?
-
---
-
-.center[
-  <img src="./img/esquema-op.PNG", height="450">
-]
 
 ---
 
@@ -357,7 +340,12 @@ class: middle
 
 * Sigue las buenas prácticas de escritura y testeo, esto disminuirá la cantidad de bugs, que al final se traducen en pérdida económica, de tiempo y esfuerzo.
 
-* Afina y perfila (Optimización de tiempo y memoria)
-
 * Mantén comunicación con un equipo de tecnología: Ingenieros de datos, DevOps, Testers, etc.
+
+---
+
+class: chapter-slide
+
+# ¡Gracias!
+
 
